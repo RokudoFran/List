@@ -201,23 +201,38 @@ namespace List
         }
 
         //12. метод первый индекс по значению
-        public int GetIndexByValue(int value)
+        public int GetIndexByValue(int value, int usl = 0)
         {
-            ReturnTheErrorLength(Length);
-            
+            ReturnTheErrorLength(Length);          
             int index = -1;
-            
+            int count = 1;
+
             for (int i = 0; i < Length; i++)
             {
                 if (_array[i] == value)
                 {
                     index=i;
-                    
-                    break;
+                    count++;
+
+                    if (usl == 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        RemoveOneElementByIndex(index);
+                    }
                 }
             }
 
-            return index;
+            if (usl == 0)
+            {
+                return index;
+            }
+            else
+            {
+                return count;
+            }
         }
 
         //13. метод изменение по индексу
@@ -367,16 +382,9 @@ namespace List
             ReturnTheErrorLength(Length);
 
             int kol = 0;
-            int index = GetIndexByValue(value);
+
+            kol = GetIndexByValue(value,1);
             
-            while (index!=-1)
-            {
-                RemoveOneElementByIndex(index);
-                
-                kol++;
-                
-                index = GetIndexByValue(value);
-            }
 
             return kol;
         }

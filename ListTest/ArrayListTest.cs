@@ -382,7 +382,7 @@ namespace ListTest
         }
 
         //22
-        [TestCase(2, new int[] { 1, 2, 2, 4, 6, 8, 2 }, 3)]
+        [TestCase(2, new int[] { 1, 2, 2, 4, 6, 2, 8, 2 }, 4)]
         public void RemoveByValueAll(int value, int[] array, int expected)
         {
             ArrayList arrayList = new ArrayList(array);
