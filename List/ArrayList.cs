@@ -204,6 +204,7 @@ namespace List
         public int GetIndexByValue(int value)
         {
             ReturnTheErrorLength(Length);
+            
             int index = -1;
             
             for (int i = 0; i < Length; i++)
@@ -233,6 +234,7 @@ namespace List
         public void Revers()
         {
             ReturnTheErrorLength(Length);
+            
             int tmp=0;
             
             for (int i = 0; i < Length / 2; i++)
@@ -247,6 +249,7 @@ namespace List
         public int FindMaxValue()
         {
             ReturnTheErrorLength(Length);
+            
             return _array[FindIndexMaxValue()];
         }
 
@@ -254,6 +257,7 @@ namespace List
         public int FindMinValue()
         {
             ReturnTheErrorLength(Length);
+            
             return _array[FindIndexMinValue()];
         }
 
