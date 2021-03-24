@@ -64,9 +64,7 @@ namespace List
         }
 
         public LinkedList(int[] values)
-        {
-            //if(values is null)
-
+        { 
             Length = values.Length;
 
             if (values.Length != 0)
@@ -87,31 +85,6 @@ namespace List
             }
         }
 
-        public void Add(int value)
-        {
-            Length++;
-            _tail.Next = new Node(value);
-            _tail = _tail.Next;
-        }
-
-        public void RemoveFirst()
-        {
-            _root = _root.Next;
-        }
-
-        public void RemoveByIndex(int index)
-        {
-            Node current = _root;
-
-            for (int i = 1; i < index; i++)
-            {
-                current = current.Next;
-            }
-
-            current.Next = current.Next.Next;
-
-            Length--;
-        }
         public override string ToString()
         {
             if (Length != 0)
@@ -158,5 +131,131 @@ namespace List
 
             return true;
         }
+        //1. метод добавление значения в конец
+        public void AddValueToTheEnd(int value)
+        {
+            Length++;
+            _tail.Next = new Node(value);
+            _tail = _tail.Next;
+        }
+
+        //2. метод добавление значения в начало
+        public void AddValueToTheBegin(int value)
+        {
+            Node tmp = _root;
+            _root = new Node(value);
+            _root.Next = tmp;
+            Length++;
+        }
+
+        //3. метод добавление значения по индексу
+        public void AddValueByIndex(int value, int index)
+        {
+            Node current = _root;
+
+            for (int i = 1; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            Node tmp = current;
+            current.Next = tmp;
+            current = new Node(value);
+
+            Length++;
+        }
+
+        //4. метод удаление из конца одного элемента
+        public void RemoveOneElementFromTheEnd()
+        {
+            Node current = _root;
+
+            for (int i = 1; i < Length-1; i++)
+            {
+                current = current.Next;
+            }
+
+            _tail=current;
+            Length--;
+        }
+
+        //5. метод удаление из начала одного элемента
+        public void RemoveOneElementFromTheBegin()
+        {
+            _root = _root.Next;
+            Length++;
+        }
+
+        //6. метод удаление по индексу одного элемента
+        public void RemoveOneElementByIndex(int index)
+        {
+            Node current = _root;
+
+            for (int i = 1; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            current.Next = current.Next.Next;
+
+            Length--;
+        }
+
+        //7. удаление из конца N элементов
+        public void RemoveToFinisNElement(int n)
+        {
+            Node current = _root;
+
+            for (int i = 1; i < Length - 1-n; i++)
+            {
+                current = current.Next;
+            }
+
+            _tail = current;
+            Length-=n;
+        }
+
+        //8.удаление из начала N элементов
+        public void RemoveToStartNElement(int n)
+        {
+            Node current = _root;
+
+            for (int i = 1; i < n ; i++)
+            {
+                current = current.Next;
+            }
+
+            _root = current;
+            Length -= n;
+        }
+
+        //9.удаление по индексу N элементов
+        public void RemoveByIndex(int index, int n)
+        {
+            Node firstTmp = _root;
+            Node enddTmp = _root;
+            Node tmp = _root;
+
+            for (int i=1; i<index+n;i++)
+            {
+                tmp = tmp.Next;
+                if (i==index-1)
+                {
+                    firstTmp = tmp;
+                }
+                else if (i==index+n-1)
+                {
+                    enddTmp = tmp;
+                }
+
+            }
+            firstTmp = enddTmp;
+
+            Length=Length - n - 1;
+        }
+
+
+
+
     }
 }

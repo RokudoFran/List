@@ -4,7 +4,7 @@ using System;
 
 namespace ListTest
 {
-    public class Tests
+    public class ArrayListTest
     {
         //1
         [TestCase(4, new int[] { }, new int[] { 4 })]
