@@ -186,13 +186,13 @@ namespace ListTest
 
             Assert.Throws<ArgumentOutOfRangeException>(() => actual.GetValueByIndex(index));
         }
+
         //12
-        [TestCase(1, new int[] { 1, 2, 3, 4 }, 2)]
-        public void GetIndexByValue(int index, int[] array, int expected)
+        [TestCase(2, new int[] { 1, 2, 3, 4 }, 1)]
+        public void GetIndexByValue(int value, int[] array, int expected)
         {
             ArrayList arrayList = new ArrayList(array);
-
-            int actual = arrayList[index];
+            int actual = arrayList.GetIndexByValue(value);
 
             Assert.AreEqual(expected, actual);
         }
