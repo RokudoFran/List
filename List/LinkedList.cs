@@ -153,7 +153,7 @@ namespace List
         {
             Node current = _root;
 
-            for (int i = 1; i < index; i++)
+            for (int i = 0; i < index-1; i++)
             {
                 current = current.Next;
             }
@@ -249,9 +249,139 @@ namespace List
                 }
 
             }
+
             firstTmp = enddTmp;
 
             Length=Length - n - 1;
+        }
+
+        //11. метод доступ по индексу
+        public int GetValueByIndex(int index)
+        {
+            Node current = _root;
+
+            for (int i = 1; i < index -1; i++)
+            {
+                current = current.Next;
+            }
+
+            return current.Value;
+        }
+
+        //12. метод первый индекс по значению
+        public int GetIndexByValue(int value)
+        {
+            int index = -1;
+            Node current = _root;
+
+            for (int i = 1; i < Length; i++)
+            {
+                index++;
+
+                if(current.Value == value)
+                {
+                    break;
+                }
+
+                current = current.Next;
+            }
+
+            return index;
+        }
+
+        //13. метод изменение по индексу
+        public void ChangeByIndex(int index, int value)
+        {
+            Node current = _root;
+
+            for (int i = 1; i < index-1; i++)
+            {
+                current = current.Next;
+            }
+
+            current.Value = value;
+        }
+
+        //14. метод реверс (123 -> 321)
+        public void Revers()
+        {
+
+        }
+
+        //15. метод поиск значения максимального элемента
+        public int FindMaxValue()
+        {
+            Node current = _root;
+            int maxValue = current.Value; 
+
+            for (int i = 0; i < Length; i++)
+            {
+                if (current.Value>maxValue)
+                {
+                    maxValue = current.Value;
+                }
+                current = current.Next;
+            }
+
+            return maxValue;
+        }
+
+        //16. метод поиск значения минимального элемента
+        public int FindMinValue()
+        {
+            Node current = _root;
+            int minValue = current.Value;
+
+            for (int i = 1; i < Length; i++)
+            {
+                if (current.Value < minValue)
+                {
+                    minValue = current.Value;
+                }
+                current = current.Next;
+            }
+
+            return minValue;
+        }
+
+        //17. метод поиск индекс максимального элемента
+        public int FindIndexMaxValue()
+        {
+            Node current = _root;
+            int maxValue = current.Value;
+            int index = 0;
+
+            for (int i = 1; i < Length - 1; i++)
+            {
+                if (current.Value > maxValue)
+                {
+                    maxValue = current.Value;
+                    index = i;
+                }
+                current = current.Next;
+            }
+
+            return index;
+        }
+
+        //18. метод поиск индекс минимального элемента
+        public int FindIndexMinValue()
+        {
+            Node current = _root;
+            int minValue = current.Value;
+            int index = 0;
+
+            for (int i = 1; i < Length - 1; i++)
+            {
+                if (current.Value < minValue)
+                {
+                    minValue = current.Value;
+                    index = i;
+                }
+                current = current.Next;
+            }
+
+            return index;
         }
 
 
